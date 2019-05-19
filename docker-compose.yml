@@ -18,4 +18,3 @@ services:
       - ./mysql-conf/:/etc/mysql/conf.d/
       - ./mysql-init/:/docker-entrypoint-initdb.d/
       - ./tuning-logs/:/var/course-data/logs/
-    network_mode: "host"
