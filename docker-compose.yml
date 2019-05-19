@@ -1,0 +1,21 @@
+version: '2'
+services:
+  mysql:
+    image: pichlermarc/tuning-competition:latest
+    build:
+      context: ./docker-context
+      dockerfile: Dockerfile
+    container_name: tuning-competition
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'dbt2014'
+      MYSQL_ROOT_PASSWORD: 'dbt2014'
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./mysql-data:/var/lib/mysql/
+      - ./mysql-conf/:/etc/mysql/conf.d/
+      - ./mysql-init/:/docker-entrypoint-initdb.d/
+      - ./tuning-logs/:/var/course-data/logs/
+    network_mode: "host"
